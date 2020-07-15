@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Editor</title>
+	<script type="text/javascript" src="https://use.fontawesome.com/aac5c45839.js"></script>
+	<style type="text/css">
+		body{
+			background-color: lightgreen;
+		}
+
+		p#title{
+			font-family: Consolas;
+			color: white;
+			font-size: 20pt;
+			text-align: center;
+		}
+
+		div {
+			text-align: center;
+			padding: center;
+			}
+	</style>
+</head>
+
+<body>
+	<p id="title">
+		<b>
+		Editor de Texto (Rich-Text)
+		</b>
+	</p>
+	<div>
+		<button onclick="execCmd('bold');"><i class= "fa fa-bold" aria-hidden="true"></i></button>
+		<button onclick="execCmd('italic');"><i class= "fa fa-italic" aria-hidden="true"></i></button>
+		<button onclick="execCmd('underline');"><i class= "fa fa-underline" aria-hidden="true"></i></button>
+		<button onclick="execCmd('strikeThrough');"><i class= "fa fa-strikethrough" aria-hidden="true"></i></button>
+		<button onclick="execCmd('justifyLeft');"><i class= "fa fa-align-left" aria-hidden="true"></i></button>
+		<button onclick="execCmd('justifyCenter');"><i class= "fa fa-align-center" aria-hidden="true"></i></button>
+		<button onclick="execCmd('justifyRight');"><i class= "fa fa-align-right" aria-hidden="true"></i></button>
+		<button onclick="execCmd('justifyFull');"><i class= "fa fa-align-justify" aria-hidden="true"></i></button>
+		<button onclick="execCmd('cut');"><i class= "fa fa-cut" aria-hidden="true"></i></button>
+		<button onclick="execCmd('copy');"><i class= "fa fa-copy" aria-hidden="true"></i></button>
+		<button onclick="execCmd('indent');"><i class= "fa fa-indent" aria-hidden="true"></i></button>
+		<button onclick="execCmd('outdent');"><i class= "fa fa-dedent" aria-hidden="true"></i></button>
+		<button onclick="execCmd('subscript');"><i class= "fa fa-subscript" aria-hidden="true"></i></button>
+		<button onclick="execCmd('superscript');"><i class= "fa fa-superscript" aria-hidden="true"></i></button>
+		<button onclick="execCmd('redo');"><i class= "fa fa-repeat" aria-hidden="true"></i></button>
+		<button onclick="execCmd('insertUnorderedList');"><i class= "fa fa-list-ul" aria-hidden="true"></i></button>
+		<button onclick="execCmd('insertOrderedList');"><i class= "fa fa-list-ol" aria-hidden="true"></i></button>
+		<button onclick="execCmd('createLink', prompt('Digite a URL', 'http://'));"><i class= "fa fa-link" aria-hidden="true"></i></button>
+		<button onclick="execCmd('unlink');"><i class= "fa fa-unlink" aria-hidden="true"></i></button>
+		<button onclick="toggleSource();"><i class= "fa fa-code" aria-hidden="true"></i></button>
+		<button onclick="execCmd('undo');"><i class= "fa fa-undo" aria-hidden="true"></i></button>
+
+		<button onclick="execCmd('insertHorizontalRule');">HR</button>
+		<select onchange="execCommandWithArg('formatBlock', this.value)">
+			<option value="H1">H1</option>
+			<option value="H2">H2</option>
+			<option value="H3">H3</option>
+			<option value="H4">H4</option>
+			<option value="H5">H5</option>
+			<option value="H6">H6</option>
+		</select>
+
+		<br>
+		<button onclick="toggleEdit('bold');">Trancar Edição</button>
+		<select onchange="execCommandWithArg('fontName', this.value)">
+			<option value="Arial">Arial</option>
+			<option value="Consolas">Consolas</option>
+			<option value="Courier">Courier</option>
+			<option value="Georgia">Georgia</option>
+			<option value="Tahoma">Tahoma</option>
+			<option value="Old English Text MT">Old English Text MT</option>
+		</select>
+		Tamanho:
+		<select onchange="execCommandWithArg('fontSize', this.value)">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+		</select>
+		Cor do Texto: <input type="color" onchange="execCommandWithArg('foreColor', this.value)" name="cor" />
+		Cor do Fundo: <input type="color" onchange="execCommandWithArg('hiliteColor', this.value)" name="cor" />
+		<button onclick="execCommandWithArg('insertImage', prompt('Digite a URL da Imagem:', ''));"><i class= "fa fa-file-image-o" aria-hidden="true"></i></button>
+		<button onclick="execCmd('selectAll');">Selecionar Tudo</button>
+	</div>
+	</div>
+
+	<p align="center"><iframe id="Editor" name="Editor" contenteditable="true" style="width: 800px; height: 200px; background-color: white;"></iframe></p>
+
+	<script type="text/javascript" src="_JS/javascript.js">
+	</script>
+
+</body>
+</html>
